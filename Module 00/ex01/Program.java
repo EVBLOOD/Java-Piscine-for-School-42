@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:09:48 by sakllam           #+#    #+#             */
-/*   Updated: 2022/10/19 18:52:59 by sakllam          ###   ########.fr       */
+/*   Updated: 2022/10/19 18:54:47 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ public class Program
             int i = x.nextInt();
             if (i <= 0)
             {
-                System.out.println("Illegal arg msg!");
+                System.out.println("IllegalArgument!");
                 return ;
             }
             for (int number = 2; number *number <= i; number++)

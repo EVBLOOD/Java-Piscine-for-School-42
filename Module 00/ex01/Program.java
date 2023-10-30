@@ -17,24 +17,24 @@ public class Program {
         Scanner x = new Scanner(System.in);
         int iternb = 1;
         System.out.print("-> ");
-        try {
-            int i = x.nextInt();
-            if (i <= 0) {
-                System.err.println("IllegalArgument");
+        // try {
+        int i = x.nextInt();
+        if (i <= 0) {
+            System.err.println("IllegalArgument");
+            return;
+        }
+        for (int number = 2; number * number <= i; number++) {
+            if (i % number == 0) {
+                System.out.print("false ");
+                System.out.println(iternb);
                 return;
             }
-            for (int number = 2; number * number <= i; number++) {
-                if (i % number == 0) {
-                    System.out.print("false ");
-                    System.out.println(iternb);
-                    return;
-                }
-                iternb++;
-            }
-            System.out.print("true ");
-            System.out.println(iternb);
-        } catch (InputMismatchException e) {
-            System.err.println("IllegalArgument");
+            iternb++;
         }
+        System.out.print("true ");
+        System.out.println(iternb);
+        // } catch (InputMismatchException e) {
+        // System.err.println("IllegalArgument");
+        // }
     }
 }

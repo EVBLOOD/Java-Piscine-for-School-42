@@ -12,37 +12,29 @@
 
 import java.util.*;
 
-public class Program
-{
-    public static void main(String args[])
-    {
+public class Program {
+    public static void main(String args[]) {
         Scanner x = new Scanner(System.in);
         int iternb = 1;
         System.out.print("-> ");
-        try 
-        {
+        try {
             int i = x.nextInt();
-            if (i <= 0)
-            {
-                System.out.println("IllegalArgument!");
-                return ;
+            if (i <= 0) {
+                System.err.println("IllegalArgument");
+                return;
             }
-            for (int number = 2; number *number <= i; number++)
-            {
-                if (i % number == 0)    
-                {
+            for (int number = 2; number * number <= i; number++) {
+                if (i % number == 0) {
                     System.out.print("false ");
                     System.out.println(iternb);
-                    return ;
+                    return;
                 }
                 iternb++;
             }
             System.out.print("true ");
             System.out.println(iternb);
-        }
-        catch (InputMismatchException e)
-        {
-            System.out.println("Bro write a valid integer");
+        } catch (InputMismatchException e) {
+            System.err.println("IllegalArgument");
         }
     }
 }

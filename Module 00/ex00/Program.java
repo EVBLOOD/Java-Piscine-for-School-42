@@ -13,15 +13,24 @@
 
 public class Program
 {
+    static int x = 0;
+    static void recursive(int number, int sum)
+    {
+
+        if (x == 6)
+            System.out.println(sum);
+        else
+        {
+            sum += number % 10;
+            x++;
+            recursive(number / 10, sum);
+        }
+
+    }
+
     public static void main(String args[])
     {
-        int i = 479598;
-        int sum = 0;
-        while (i != 0)
-        {
-            sum += i % 10;
-            i = i / 10;
-        }
-        System.out.println(sum);
+        int theNumber = 479598;
+        recursive(theNumber, 0);
     }
 }

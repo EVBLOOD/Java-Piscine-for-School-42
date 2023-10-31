@@ -12,40 +12,35 @@
 
 import java.util.*;
 
-public class Program
-{
-    private static int ft_sum(int i)
-    {
+public class Program {
+    static int ft_sum(int i) {
         int sum = 0;
-        while (i != 0)
-        {
+        while (i != 0) {
             sum += i % 10;
             i = i / 10;
         }
         return sum;
     }
-    private static Boolean ft_isprime(int i)
-    {
-        for (int number = 2; number *number <= i; number++)
-        {
-            if (i % number == 0)    
+
+    static Boolean ft_isprime(int i) {
+        for (int number = 2; number * number <= i; number++) {
+            if (i % number == 0)
                 return false;
         }
         return true;
     }
-    public static void main(String args[])
-    {
+
+    public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
 
         int number;
         int total = 0;
-        while (true)
-        {
+        while (true) {
             System.out.print("-> ");
             number = in.nextInt();
-            if (number <= 0)
-            {
+            if (number <= 0) {
                 System.err.println("IlegalArgument");
+                in.close();
                 return;
             }
             if (number == 42)
@@ -54,5 +49,6 @@ public class Program
                 total++;
         }
         System.out.println("Count of coffee-request - " + total);
+        in.close();
     }
 }

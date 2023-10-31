@@ -84,23 +84,27 @@ public class Program {
         int min;
         int LastWeek = 0;
         long result = 0;
-        while (true) {
+        while (LastWeek != 18) {
             System.out.print("-> ");
             week_name = in.next();
             if (week_name.equals("42"))
                 break;
-            if (week_name.equals("Week") == false)
+            if (week_name.equals("Week") == false) {
+                System.err.println("IllegalArgument");
                 System.exit(-1);
+            }
             week_number = in.nextInt();
-            if (week_number - 1 != LastWeek)
+            if (week_number - 1 != LastWeek) {
+                System.err.println("IllegalArgument");
                 System.exit(-1);
+            }
             LastWeek = week_number;
             in.nextLine();
             System.out.print("-> ");
             min = 10;
             for (int i = 0; i < 5; i++) {
                 infos = in.nextInt();
-                if (infos < 0 || infos > 9) {
+                if (infos <= 0 || infos > 9) {
                     System.err.println("IllegalArgument");
                     System.exit(-1);
                 }

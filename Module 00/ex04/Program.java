@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:38:25 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/01 22:48:19 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/02 17:13:54 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,54 +83,30 @@ public class Program {
                 AllIn += counter;
             }
         }
-        System.err.println(AllIn);
-        System.err.println(AllIn / 100);
         int limit = 10 < ExistingChars.length ? 10 : ExistingChars.length;
         for (int k = 10; k >= 0; k--) {
             for (int i = 0; i < limit; i++) {
-                if (OutStandingints[i] / OutStandingints[0] * 10 == k) {
-                    if (i != 0)
-                        System.err.print(" ");
+                if (i != 0)
+                    System.err.print(" ");
+                if ((int) ((float) OutStandingints[i] / OutStandingints[0] * 10) == k) {
                     System.out.print(OutStandingints[i]);
-                    if (i != limit - 1)
-                        System.err.print(" ");
-                    if (i == limit - 1)
-                        System.out.println("");
-                } else if (OutStandingints[i] / OutStandingints[0] * 10 > k) {
-                    if (i != 0)
-                        System.err.print(" ");
+                    // if (i != limit - 1)
+                    // System.err.print("|");
+                } else if ((int) ((float) OutStandingints[i] / OutStandingints[0] * 10) > k) {
                     System.out.print("#");
-                    if (i != limit - 1)
-                        System.err.print(" ");
-                    if (i == limit - 1)
-                        System.out.println("");
-                } else {
-                    if (i != 0)
-                        System.err.print(" ");
-                    System.out.print(" ");
-                    if (i != limit - 1)
-                        System.err.print(" ");
-                    if (i == limit - 1)
-                        System.out.println("");
                 }
+                if (i != limit - 1)
+                    System.out.print(" ");
             }
-
-            // for (int i = 0; i < 10 && i < ExistingChars.length; i++) {
-            // if (OutStandingints[i] / OutStandingints[0] * 10 == k) {
-            // System.out.print(OutStandingints[i]);
-            // if (k != 0)
-            // System.err.print(" ");
-            // } else if (OutStandingints[i] > k) {
-            // if (i != 0 && i != 10)
-            // System.err.print(" ");
-            // System.out.print("#");
-            // if (i != 9 || i != ExistingChars.length - 1)
-            // System.err.print(" ");
-            // } else
-            // System.out.print(" ");
-            // }
-            // System.out.println();
+            System.out.println("");
         }
-
+        for (int i = 0; i < limit; i++) {
+            if (i != 0)
+                System.err.print(" ");
+            System.out.print(OutStandingChars[i]);
+            if (i != limit - 1)
+                System.out.print(" ");
+        }
+        System.out.println("");
     }
 }

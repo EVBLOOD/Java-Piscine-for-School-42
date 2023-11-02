@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Program.Java                                       :+:      :+:    :+:   */
+/*   Program.java                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:38:25 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/02 17:13:54 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/02 22:42:04 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,23 @@ import java.util.Scanner;
 
 public class Program {
 
-    static int search(char[] lol, int[] array, int left, int right, int target, char xyz) {
-        int midel = left + ((right - left) / 2);
-        if (midel > right)
-            return (-1);
-        if (midel == 0 ||
-                ((target < array[midel - 1] || ((target == array[midel - 1] && xyz > lol[midel - 1])))
-                        && (target > array[midel] || (target == array[midel] && xyz > lol[midel])))) {
-            if (midel == 0)
-                return midel;
-            if (target == array[midel - 1] && xyz > lol[midel - 1])
-                return (midel - 1);
-            return (midel);
+    static int search(char[] charTable, int[] array, int target, char charTarget) {
+        int index = -1;
+        int finalIndex = 0;
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] <= target) {
+                index = i;
+                break;
+            }
         }
-        if (target > array[midel])
-            return search(lol, array, left, midel - 1, target, xyz);
-        else if (target < array[midel])
-            return search(lol, array, midel + 1, right, target, xyz);
-        else if (xyz < lol[midel])
-            return search(lol, array, midel + 1, right, target, xyz);
-        return midel;
+        if (index == -1 || array[index] < target)
+            return index;
+        finalIndex = index;
+        for (int i = index; i < charTable.length && array[i] == target; i++) {
+            if (charTarget > charTable[i])
+                finalIndex = i + 1;
+        }
+        return finalIndex;
     }
 
     public static void main(String args[]) {
@@ -43,13 +40,13 @@ public class Program {
         String input = x.nextLine();
         x.close();
         char[] all = input.toCharArray();
-        char[] ExistingChars = new char[256];
+        char[] ExistingChars = new char[65536];
         int[] OutStandingints = new int[10];
         char[] OutStandingChars = new char[10];
         int j = 0;
         boolean NotExits;
         int counter;
-        int AllIn = 0;
+        int CharsNumber = 0;
 
         for (int i = 0; i < all.length; i++) {
             NotExits = true;
@@ -60,52 +57,38 @@ public class Program {
                 }
             }
             if (NotExits) {
+                CharsNumber++;
                 counter = 0;
                 ExistingChars[j] = all[i];
                 for (int k = 0; k < all.length; k++) {
                     if (ExistingChars[j] == all[k])
                         counter++;
                 }
-                int index = search(OutStandingChars, OutStandingints, 0, OutStandingints.length - 1, counter,
-                        all[i]);
+                j++;
+                int index = search(OutStandingChars, OutStandingints, counter, all[i]);
                 if (index >= OutStandingints.length - 1 || index == -1)
                     continue;
-                // System.err.println(index);
                 for (int k = OutStandingints.length - 1; k != index; k--) {
                     OutStandingints[k] = OutStandingints[k - 1];
-                }
-                for (int k = OutStandingChars.length - 1; k != index; k--) {
                     OutStandingChars[k] = OutStandingChars[k - 1];
                 }
-                j++;
                 OutStandingints[index] = counter;
                 OutStandingChars[index] = all[i];
-                AllIn += counter;
             }
         }
-        int limit = 10 < ExistingChars.length ? 10 : ExistingChars.length;
+        int limit = 10 < CharsNumber ? 10 : CharsNumber;
         for (int k = 10; k >= 0; k--) {
             for (int i = 0; i < limit; i++) {
-                if (i != 0)
-                    System.err.print(" ");
-                if ((int) ((float) OutStandingints[i] / OutStandingints[0] * 10) == k) {
-                    System.out.print(OutStandingints[i]);
-                    // if (i != limit - 1)
-                    // System.err.print("|");
-                } else if ((int) ((float) OutStandingints[i] / OutStandingints[0] * 10) > k) {
-                    System.out.print("#");
+                if ((int) ((double) OutStandingints[i] / OutStandingints[0] * 10) == k) {
+                    System.out.printf("%3d", OutStandingints[i]);
+                } else if ((int) ((double) OutStandingints[i] / OutStandingints[0] * 10) > k) {
+                    System.out.printf("%3s", "#");
                 }
-                if (i != limit - 1)
-                    System.out.print(" ");
             }
             System.out.println("");
         }
         for (int i = 0; i < limit; i++) {
-            if (i != 0)
-                System.err.print(" ");
-            System.out.print(OutStandingChars[i]);
-            if (i != limit - 1)
-                System.out.print(" ");
+            System.out.printf("%3s", OutStandingChars[i]);
         }
         System.out.println("");
     }

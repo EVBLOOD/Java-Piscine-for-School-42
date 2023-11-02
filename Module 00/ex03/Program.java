@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:17:26 by sakllam           #+#    #+#             */
-/*   Updated: 2022/12/20 19:45:30 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/02 17:17:20 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ public class Program {
 
     }
 
-    public static void main(String args[]) {
+    public static void main() {
         Scanner in = new Scanner(System.in);
         String week_name;
         int week_number;

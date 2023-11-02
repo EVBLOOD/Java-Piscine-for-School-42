@@ -5,28 +5,21 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/19 17:17:35 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/02 17:17:43 by sakllam          ###   ########.fr       */
+/*   Created: 2023/11/02 17:16:34 by sakllam           #+#    #+#             */
+/*   Updated: 2023/11/02 19:17:30 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 public class Program {
-    static int x = 0;
+    static public void main()
+    {
+        // September 2020
+        int i = 0;
+        String[] names;
+        while (i < 10)
+        {
 
-    static void recursive(int number, int sum) {
-
-        if (x == 6)
-            System.out.println(sum);
-        else {
-            sum += number % 10;
-            x++;
-            recursive(number / 10, sum);
+            // i++;
         }
-
-    }
-
-    public static void main() {
-        int theNumber = 479598;
-        recursive(theNumber, 0);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:16:34 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/04 20:52:06 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 20:55:51 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ public class Program {
             listOfAttendence[index] = var;
             index++;
         }
-        System.out.printf("%11s", "");
+        System.out.printf("%10s", "");
         for (int i = 0; i < 31; i++) {
             if (i != 0 && i % 7 <= 4) {
                 for (int y = 0; timeDay[y] != null; y++) {
@@ -135,8 +135,21 @@ public class Program {
             }
         }
         System.out.println();
+        // -> John
+// -> Mike
+// -> .
+// -> 2 MO
+// -> 4 WE
+// -> .
+// -> Mike 2 28 NOT_HERE
+// -> John 4 9 HERE
+// -> Mike 4 9 HERE
+// -> .
+// 4:00 WE 2| 2:00 MO 7|4:00 WE 9|2:00 MO 14|4:00 WE 16|2:00 MO 21|4:00 WE 23|2:00 MO 28|2:00 MO 30|
+// John | | 1| | | | | | |
+// Mike | | 1| | | | | -1| |
         for (int yx = 0; names[yx] != null; yx++) {
-            System.out.printf("%10s|", names[yx]);
+            System.out.printf("%10s", names[yx]);
             for (int i = 0; i < 31; i++) {
                 if (i != 0 && i % 7 <= 4) {
                     for (int y = 0; timeDay[y] != null; y++) {

@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:16:34 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/04 18:13:51 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 20:52:06 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ public class Program {
             index++;
         }
         index = 0;
-        String[] days = { "MO", "TH", "TU", "WE", "FR" };
+        int placeIn = 0;
+        String[] days = { "MO", "TU", "WE", "TH", "FR" };
         while (true) {
             var = "";
             System.out.print("-> ");
@@ -78,6 +79,7 @@ public class Program {
             for (int i = 0; names[i] != null; i++) {
                 if (names[i].equals(varRead)) {
                     found = true;
+                    placeIn = i;
                     break;
                 }
             }
@@ -85,7 +87,7 @@ public class Program {
                 System.err.println("IllegalArgument");
                 System.exit(-1);
             }
-            var += varRead;
+            var += placeIn;
             varRead = scanner.next();
             if (varRead.length() != 1 || varRead.toCharArray()[0] < '1' || varRead.toCharArray()[0] > '6') {
                 System.err.println("IllegalArgument");
@@ -120,27 +122,52 @@ public class Program {
             }
             var += varRead;
             listOfAttendence[index] = var;
-            System.err.println(listOfAttendence[index]);
             index++;
         }
-        for (int i = 0; i < listOfAttendence.length; i++) {
-
+        System.out.printf("%11s", "");
+        for (int i = 0; i < 31; i++) {
+            if (i != 0 && i % 7 <= 4) {
+                for (int y = 0; timeDay[y] != null; y++) {
+                    if (timeDay[y].toCharArray()[2] == days[i % 7].toCharArray()[0]
+                            && timeDay[y].toCharArray()[3] == days[i % 7].toCharArray()[1])
+                        System.out.printf("%c:00 %s %2d|", timeDay[y].toCharArray()[0], days[i % 7], i);
+                }
+            }
         }
-        // start is => number % 7 == 0, end is => 11 % 7 == 4
-        // System.out.println("names");
-        // for (int i = 0; names[i] != null; i++) {
-        // System.out.println(names[i]);
-        // }
-        // System.out.println("timeDay");
-        // for (int i = 0; i < Weeks; i++) {
-        // for (int j = 0; null != timeDay[i][j]; j++) {
-        // System.out.println(timeDay[i][j]);
-        // }
-        // }
-        // System.err.println("listOfAttendence");
-        // for (int i = 0; null != listOfAttendence[i]; i++) {
-        // System.out.println(listOfAttendence[i]);
-        // }
+        System.out.println();
+        for (int yx = 0; names[yx] != null; yx++) {
+            System.out.printf("%10s|", names[yx]);
+            for (int i = 0; i < 31; i++) {
+                if (i != 0 && i % 7 <= 4) {
+                    for (int y = 0; timeDay[y] != null; y++) {
+                        found = false;
+                        if (timeDay[y].toCharArray()[2] == days[i % 7].toCharArray()[0]
+                                && timeDay[y].toCharArray()[3] == days[i % 7].toCharArray()[1]) {
+                            for (int j = 0; listOfAttendence[j] != null; j++) {
+                                if (listOfAttendence[j].toCharArray()[0] - '0' == yx &&
+                                        ((listOfAttendence[j].toCharArray()[4] - '0' == i
+                                                && listOfAttendence[j].toCharArray()[5] == ' ')
+                                                ||
+                                                ((listOfAttendence[j].toCharArray()[4] - '0' == i / 10
+                                                        && listOfAttendence[j].toCharArray()[5] - '0' == i % 10)))) {
+                                    found = true;
+                                    if (listOfAttendence[j].length() - 4 == 6)
+                                        System.out.printf("%10s|", "1");
+                                    else
+                                        System.out.printf("%10s|", "-1");
+                                }
+                            }
+                        }
+                        if (!found && timeDay[y].toCharArray()[2] == days[i % 7].toCharArray()[0]
+                                && timeDay[y].toCharArray()[3] == days[i % 7].toCharArray()[1]) {
+                            System.out.printf("%10s|", "");
+                        }
+
+                    }
+                }
+            }
+            System.out.println();
+        }
         scanner.close();
     }
 }

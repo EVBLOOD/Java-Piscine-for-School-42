@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:16:34 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/03 22:54:14 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 18:13:51 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,8 @@ public class Program {
             timeDay[index] = times + day;
             index++;
         }
-        // Weeks++;
-        // if (times.equals("."))
-        // break;
-        // }
         index = 0;
+        String[] days = { "MO", "TH", "TU", "WE", "FR" };
         while (true) {
             var = "";
             System.out.print("-> ");
@@ -100,6 +97,21 @@ public class Program {
                 System.err.println("IllegalArgument");
                 System.exit(-1);
             }
+            if (monthDay % 7 > 4) {
+                System.err.println("IllegalArgument: We only work from MO to FR");
+                System.exit(-1);
+            }
+            found = true;
+            for (int i = 0; timeDay[i] != null; i++) {
+                if (timeDay[i].equals(varRead + " " + days[monthDay % 7])) {
+                    found = false;
+                    break;
+                }
+            }
+            if (found) {
+                System.err.println("IllegalArgument: The class time/day doesn't exists on timeline");
+                System.exit(-1);
+            }
             var = var + " " + monthDay;
             varRead = scanner.nextLine();
             if (!varRead.equals(" HERE") && !varRead.equals(" NOT_HERE")) {
@@ -111,6 +123,10 @@ public class Program {
             System.err.println(listOfAttendence[index]);
             index++;
         }
+        for (int i = 0; i < listOfAttendence.length; i++) {
+
+        }
+        // start is => number % 7 == 0, end is => 11 % 7 == 4
         // System.out.println("names");
         // for (int i = 0; names[i] != null; i++) {
         // System.out.println(names[i]);

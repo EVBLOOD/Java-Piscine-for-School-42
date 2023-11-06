@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/19 18:09:48 by sakllam           #+#    #+#             */
-/*   Updated: 2022/10/19 18:54:47 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 21:49:56 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ import java.util.*;
  * If the result is different from 1, then n is composite. If it is 1, then n may be prime.
  */
 public class Program {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner x = new Scanner(System.in);
         int iternb = 1;
         System.out.print("-> ");

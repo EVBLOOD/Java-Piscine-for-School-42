@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:17:26 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/02 17:17:20 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 21:49:56 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 import java.util.Scanner;
 
 // public class Program {
-//     public static void main(String args[]) {
+//     public static void main(String[] args) {
 //         Map<String, Integer> x = new HashMap<>();
 //         Scanner in = new Scanner(System.in);
 //         String infos;

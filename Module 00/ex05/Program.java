@@ -6,19 +6,18 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 17:16:34 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/04 20:55:51 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 22:01:56 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 import java.util.Scanner;
 
 public class Program {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int index = 0;
         String[] names = new String[10];
         String[] timeDay = new String[5];
-        // int Weeks = 0;
         String[] listOfAttendence = new String[10 * 10 * 5];
         String var;
         String varRead;
@@ -34,7 +33,6 @@ public class Program {
             index++;
         }
         String times = "";
-        // while (Weeks < 5) {
         index = 0;
         while (index < 5) {
             System.out.print("-> ");
@@ -135,19 +133,6 @@ public class Program {
             }
         }
         System.out.println();
-        // -> John
-// -> Mike
-// -> .
-// -> 2 MO
-// -> 4 WE
-// -> .
-// -> Mike 2 28 NOT_HERE
-// -> John 4 9 HERE
-// -> Mike 4 9 HERE
-// -> .
-// 4:00 WE 2| 2:00 MO 7|4:00 WE 9|2:00 MO 14|4:00 WE 16|2:00 MO 21|4:00 WE 23|2:00 MO 28|2:00 MO 30|
-// John | | 1| | | | | | |
-// Mike | | 1| | | | | -1| |
         for (int yx = 0; names[yx] != null; yx++) {
             System.out.printf("%10s", names[yx]);
             for (int i = 0; i < 31; i++) {
@@ -159,7 +144,7 @@ public class Program {
                             for (int j = 0; listOfAttendence[j] != null; j++) {
                                 if (listOfAttendence[j].toCharArray()[0] - '0' == yx &&
                                         ((listOfAttendence[j].toCharArray()[4] - '0' == i
-                                                && listOfAttendence[j].toCharArray()[5] == ' ')
+                                                && listOfAttendence[j].toCharArray()[5] == ' ') 
                                                 ||
                                                 ((listOfAttendence[j].toCharArray()[4] - '0' == i / 10
                                                         && listOfAttendence[j].toCharArray()[5] - '0' == i % 10)))) {

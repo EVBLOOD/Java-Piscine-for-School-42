@@ -6,7 +6,7 @@
 /*   By: sakllam <sakllam@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 16:38:25 by sakllam           #+#    #+#             */
-/*   Updated: 2023/11/02 22:42:04 by sakllam          ###   ########.fr       */
+/*   Updated: 2023/11/04 21:49:56 by sakllam          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ public class Program {
         return finalIndex;
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         Scanner x = new Scanner(System.in);
 
         System.out.print("-> ");
